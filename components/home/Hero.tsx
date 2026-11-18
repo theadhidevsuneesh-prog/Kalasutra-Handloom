@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import SafeImage from "../SafeImage";
 import { artisans, artisanStates } from "@/data/artisans";
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=75`;
+import { img } from "@/lib/images";
 
 export default function Hero() {
   return (
@@ -25,8 +25,8 @@ export default function Hero() {
         </div>
 
         <div className="relative mx-auto grid w-full max-w-lg grid-cols-2 gap-4" aria-hidden>
-          <SafeImage src={img("photo-1610030469983-98e550d6193c")} alt="" loading="eager" className="aspect-[3/4] w-full rounded-t-[6rem] rounded-b-2xl object-cover" />
-          <SafeImage src={img("photo-1565193566173-7a0ee3dbe261")} alt="" loading="eager" className="mt-10 aspect-[3/4] w-full rounded-2xl rounded-b-[6rem] object-cover" />
+          <SafeImage src={img("ikat")} alt="" loading="eager" className="aspect-[3/4] w-full rounded-t-[6rem] rounded-b-2xl object-cover" />
+          <SafeImage src={img("bluepot2")} alt="" loading="eager" className="mt-10 aspect-[3/4] w-full rounded-2xl rounded-b-[6rem] object-cover" />
           <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-indigo shadow-lg">
             ✦ Every piece ships with its maker&apos;s story
           </div>

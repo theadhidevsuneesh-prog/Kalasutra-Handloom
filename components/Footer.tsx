@@ -29,6 +29,7 @@ export default function Footer() {
             <li><Link className="hover:text-white" href="/#trust">Authenticity &amp; marks</Link></li>
             <li><Link className="hover:text-white" href="/wishlist">Your wishlist</Link></li>
             <li><Link className="hover:text-white" href="/checkout">Checkout</Link></li>
+            <li><Link className="hover:text-white" href="/credits">Photo credits</Link></li>
           </ul>
         </nav>
         <div>
