@@ -1,24 +1,52 @@
-# KalaSutra – Artisan Handicrafts & Handloom
+# KalaSutra: Artisan Handicrafts & Handloom
 
-A D2C storefront demo built with Next.js (App Router), TypeScript, Tailwind CSS, Zustand and Lucide icons.
+A modern, responsive direct-to-consumer storefront for Indian handicrafts and handloom, built with Next.js, TypeScript and Tailwind CSS. It showcases real craft traditions from 25 states, with real photographs and artisan community profiles.
 
-## Run locally
+**Live demo:** https://kalasutra-handloom.vercel.app
+
+> Preserving Heritage, Empowering Artisans
+
+## Features
+
+- **Home:** hero, animated impact counters, curated collections, bestsellers, featured-artisan carousel, testimonials and heritage trust badges (Silk Mark, Craft Mark, Handloom Mark).
+- **Shop (`/shop`):** filter by category, craft form, state, material, price and stock; sort; instant search with autocomplete by craft, region or artisan; mobile filter drawer.
+- **Product page (`/product/[slug]`):** image gallery with zoom, tax-inclusive price, stock and quantity, craft details, "Meet your maker" tab, care guide and recommendations.
+- **Cart and checkout:** slide-over cart with coupons (`HERITAGE10`, `WEAVE15`) and free-shipping progress; multi-step checkout (address, delivery, UPI / card / net banking / COD, review).
+- **Artisans (`/artisans`):** 41 craft communities with a clickable cluster map, state filters and links to their products.
+- **Wishlist and photo credits** pages; cart and wishlist persist in the browser.
+- Accessible, mobile-first UI with semantic HTML, ARIA attributes and reduced-motion support.
+
+## Tech stack
+
+Next.js 16 (App Router) · React · TypeScript · Tailwind CSS 4 · Zustand · Lucide React
+
+## Getting started
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open http://localhost:3000.
+## Project structure
 
-## Pages
-
-`/` home · `/shop` catalog with filters and search · `/product/[slug]` · `/checkout` · `/artisans` · `/wishlist`
+```
+app/          routes (home, shop, product, checkout, artisans, wishlist, credits)
+components/   Navbar, Footer, ProductCard, ArtisanCard, CartDrawer, FilterSidebar, home sections
+data/         products.ts, artisans.ts (mock data)
+lib/          search, utilities, images (photo library with credits)
+store/        Zustand stores for cart/wishlist and filters
+types/        shared TypeScript types
+```
 
 ## About the data
 
-- `data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable) across 25 states, described factually. No individual is named or quoted.
-- `data/products.ts`: products represent real craft traditions, but listings, prices, stock and ratings are **illustrative**. They do not represent real sellers or inventory.
-- `lib/images.ts`: real photographs of each craft from Wikimedia Commons, with author and licence, shown on `/credits`.
-- Craft-by-state information follows the list in the Indiahandmade "All India Handicrafts Week 2025" article. Their photos were not copied.
-- Checkout is a demo; no payment is processed.
+- `data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.
+- `data/products.ts`: products represent real craft traditions, but listings, **prices, stock and ratings are illustrative**. They are not real sellers or inventory.
+- The state-by-state list of crafts follows the Indiahandmade article "All India Handicrafts Week 2025". Their photos were not copied.
+- Photographs come from Wikimedia Commons under free licences. See `/credits` or `lib/images.ts` for each author and licence.
+- Checkout is a demo: no payment is processed and nothing is stored on a server.
+
+## Deployment
+
+Deployed on Vercel. To redeploy: `npx vercel deploy --prod`.
