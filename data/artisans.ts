@@ -11,6 +11,8 @@ const c = (
   cluster: string, coords: [number, number], image: ImgKey, story: string, giTag?: string,
 ): Artisan => ({ id, name, craft, village, district, state, cluster, coords, image: img(image), story, giTag, community: true });
 
+// The list of craft communities. To add one, append c(id, name, craft, village, district, state, cluster, [lat, lng], photoKey, story, giTag?).
+// `coords` places the dot on the /artisans map; `photoKey` must exist in lib/images.ts.
 export const artisans: Artisan[] = [
   c("barpali-ikat", "Barpali Ikat Weavers", "Sambalpuri Ikat", "Barpali", "Bargarh", "Odisha", "Sambalpuri Ikat Weaving Belt", [21.19, 83.58], "ikat",
     "Sambalpuri ikat is woven in the Bargarh–Sambalpur region of western Odisha. The yarn is tied and dyed in a resist process before weaving, so the pattern forms as the cloth is woven. Barpali is one of the best-known weaving centres.", "Sambalpuri Ikat – GI registered"),

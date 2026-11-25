@@ -1,3 +1,12 @@
+/*
+ * GLOBAL STYLES.
+ * - @theme: brand colours (linen, terracotta, indigo, forest, brass, charcoal) and fonts.
+ *   They become Tailwind classes, e.g. bg-linen, text-terracotta, font-serif.
+ * - Reusable classes: .container-x (page width), .btn / .btn-* (buttons), .input, .kicker
+ *   (small uppercase label), .pattern-bg (dotted background).
+ * - Animation classes (.anim-*) used by drawers and fades; they switch off for users who
+ *   prefer reduced motion.
+ */
 @import "tailwindcss";
 
 @theme {

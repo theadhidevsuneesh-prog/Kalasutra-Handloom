@@ -1,3 +1,7 @@
+/**
+ * ARTISAN CARD: one craft community on /artisans: photo, name, place, story excerpt,
+ * small stats (only shown when known) and a link to shop their products (/shop?artisan=<id>).
+ */
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
 import type { Artisan } from "@/types";

@@ -1,3 +1,8 @@
+/**
+ * HOMEPAGE ( / ).
+ * Stacks the home sections in order: Hero, impact counters, collection tiles,
+ * bestselling products, artisan spotlight carousel, then testimonials and trust badges.
+ */
 import Link from "next/link";
 import Hero from "@/components/home/Hero";
 import ImpactCounter from "@/components/home/ImpactCounter";

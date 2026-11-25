@@ -1,4 +1,9 @@
 "use client";
+/**
+ * SEARCH BOX with autocomplete (used in the Navbar).
+ * Suggestions come from lib/search.ts (crafts, regions, artisans, products). Supports
+ * keyboard (arrows/Enter/Esc); Enter without a pick goes to /shop?q=<text>.
+ */
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -22,6 +27,7 @@ export default function SearchBox({ onNavigate }: { onNavigate?: () => void }) {
     return () => document.removeEventListener("mousedown", close);
   }, []);
 
+  // Close the list, clear the box and navigate to a suggestion / search results page.
   const go = (href: string) => {
     setOpen(false);
     setQ("");

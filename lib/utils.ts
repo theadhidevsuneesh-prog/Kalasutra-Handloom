@@ -1,3 +1,5 @@
+// SHARED HELPERS & SETTINGS: price formatting, shipping rules, coupon codes and a class-name joiner.
+// Formats a number as Indian rupees, e.g. 4850 -> "₹4,850".
 export const inr = (n: number) =>
   new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(n);
 

@@ -1,4 +1,5 @@
 "use client";
+// FILTER STORE (Zustand): current /shop search text, selected filters, sort order and whether the mobile filter drawer is open. Not saved between visits.
 
 import { create } from "zustand";
 

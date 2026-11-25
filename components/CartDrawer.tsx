@@ -1,4 +1,9 @@
 "use client";
+/**
+ * CART DRAWER: the panel that slides in from the right when the cart is opened.
+ * Shows items with quantity +/-, a free-shipping progress bar, a coupon box, the price
+ * breakdown and the checkout button. Open/closed state is in store/useStore.ts.
+ */
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -15,6 +20,7 @@ export default function CartDrawer() {
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
+  // While open: lock page scrolling, focus the close button and let Esc close the drawer.
   useEffect(() => {
     if (!cartOpen) return;
     document.body.style.overflow = "hidden";
@@ -26,6 +32,7 @@ export default function CartDrawer() {
 
   if (!mounted || !cartOpen) return null;
 
+  // Join each cart line with its product details (skips ids that no longer exist).
   const lines = cart.flatMap((l) => { const p = products.find((x) => x.id === l.productId); return p ? [{ ...l, p }] : []; });
   const t = computeTotals(cart, coupon);
   const progress = Math.min(100, ((t.subtotal - t.discount) / FREE_SHIPPING_THRESHOLD) * 100);

@@ -1,4 +1,5 @@
 "use client";
+// HOME > ARTISAN SPOTLIGHT: carousel of the first 5 artisan communities (prev/next buttons + dots), each with 2 of their products.
 
 import Link from "next/link";
 import { useState } from "react";

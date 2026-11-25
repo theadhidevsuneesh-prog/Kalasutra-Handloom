@@ -1,4 +1,5 @@
 "use client";
+// HOME > IMPACT COUNTER: row of headline numbers that count up once when scrolled into view.
 
 import { useEffect, useRef, useState } from "react";
 import { BadgeCheck, HandHeart, Landmark, Users } from "lucide-react";
@@ -10,6 +11,7 @@ const stats = [
   { icon: BadgeCheck, value: 62, suffix: "%", label: "of price reaches the maker" },
 ];
 
+// Counts from 0 up to `to` (ease-out, ~1.4s) the first time it scrolls into view; skips animation if reduced-motion is on.
 function Count({ to, suffix }: { to: number; suffix: string }) {
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);

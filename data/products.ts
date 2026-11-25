@@ -1,3 +1,13 @@
+/**
+ * PRODUCT DATA.
+ * - `categories`: the 6 shop categories (name, tagline, tile photo).
+ * - `baseProducts`: every product's details (price, stock, description, care, etc.).
+ *   Prices/stock/ratings are illustrative demo values.
+ * - `imageMap`: which real photos (keys from lib/images.ts) belong to which product id.
+ *   A product with no entry there is hidden from the site.
+ * - `products`: the final list the site uses (baseProducts + photos).
+ * To ADD a product: add an object to baseProducts, then add its photo keys to imageMap.
+ */
 import type { Category, Product } from "@/types";
 
 import { img, imgs, type ImgKey } from "@/lib/images";
@@ -645,6 +655,7 @@ const imageMap: Record<string, ImgKey[]> = {
   p53: ["shola1", "shola2"], p54: ["thangka"], p55: ["tripura"], p56: ["haryana"], p57: ["arunachal"],
 };
 
+// Final product list: keep only products that have photos, and attach the real photo URLs.
 export const products: Product[] = baseProducts
   .filter((p) => imageMap[p.id])
   .map((p) => ({ ...p, images: imgs(...imageMap[p.id]) }));

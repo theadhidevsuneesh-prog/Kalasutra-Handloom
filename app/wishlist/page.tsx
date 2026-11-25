@@ -1,4 +1,5 @@
 "use client";
+// WISHLIST PAGE ( /wishlist ): shows products the user hearted (saved in the browser by store/useStore.ts).
 
 import Link from "next/link";
 import { Heart } from "lucide-react";

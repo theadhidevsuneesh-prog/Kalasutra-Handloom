@@ -1,4 +1,5 @@
 "use client";
+// SAFE IMAGE: a plain <img> that swaps to a placeholder icon if the photo fails to load, so a broken link never leaves a hole in the layout.
 
 import { useState } from "react";
 import { ImageOff } from "lucide-react";

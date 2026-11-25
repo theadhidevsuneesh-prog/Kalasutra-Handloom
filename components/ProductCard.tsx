@@ -1,4 +1,9 @@
 "use client";
+/**
+ * PRODUCT CARD: the tile used in every product grid.
+ * Shows two photos (second appears on hover), badges (GI Tagged, Sold out, Only N left),
+ * craft/artisan/rating, price with discount, a wishlist heart and an Add-to-cart button.
+ */
 
 import Link from "next/link";
 import { Heart, MapPin, ShoppingBag, Star } from "lucide-react";
@@ -17,6 +22,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const out = product.stock === 0;
   const low = product.stock > 0 && product.stock <= 5;
   const off = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+  // Only trust the saved wishlist after mount, otherwise server and browser HTML would differ.
   const isWished = mounted && wished;
 
   return (

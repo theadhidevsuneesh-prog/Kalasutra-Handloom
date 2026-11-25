@@ -1,3 +1,4 @@
+// Shown when /product/<slug> does not match any product.
 import Link from "next/link";
 
 export default function NotFound() {

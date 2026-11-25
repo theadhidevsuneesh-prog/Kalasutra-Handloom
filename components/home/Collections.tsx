@@ -1,3 +1,4 @@
+// HOME > COLLECTIONS: image tiles for each category (from `categories` in data/products.ts); each links to /shop?category=<id>.
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { categories } from "@/data/products";

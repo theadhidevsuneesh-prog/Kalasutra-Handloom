@@ -1,3 +1,9 @@
+/**
+ * PRODUCT PAGE ( /product/<slug> ): server part.
+ * Pre-builds one page per product (generateStaticParams), sets the page title for SEO,
+ * looks up the product + its artisan, picks "related" products (same artisan/category
+ * first) and hands everything to ProductView. Unknown slugs show not-found.tsx.
+ */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProduct, products } from "@/data/products";

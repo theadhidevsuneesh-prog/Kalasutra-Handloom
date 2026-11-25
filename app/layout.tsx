@@ -1,3 +1,9 @@
+/**
+ * ROOT LAYOUT: wraps every page.
+ * Loads the two fonts (Playfair Display for headings, Inter for body), sets the site-wide
+ * SEO title/description, and renders the parts shared by all pages: skip-link, Navbar,
+ * the page content, Footer and the slide-over CartDrawer.
+ */
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";

@@ -1,4 +1,11 @@
 "use client";
+/**
+ * CHECKOUT PAGE ( /checkout ): 4-step form: Shipping -> Delivery -> Payment -> Review.
+ * - Each step is validated before "Continue" moves on (see `validate`).
+ * - Delivery method and COD add fees on top of the cart totals (see computeTotals).
+ * - "Place order" is a DEMO: it makes a fake order id and clears the cart. No payment is
+ *   processed and nothing is sent to a server.
+ */
 
 import Link from "next/link";
 import { useState } from "react";
@@ -60,9 +67,11 @@ export default function CheckoutPage() {
     );
   }
 
+  // Extra charges on top of normal shipping: express fee and cash-on-delivery handling fee.
   const extra = (delivery.find((d) => d.id === dMethod)?.fee ?? 0) + (pay === "cod" ? COD_FEE : 0);
   const t = computeTotals(cart, coupon, extra);
 
+  // Checks the fields of step `s` (0 = shipping, 2 = payment); fills `errors` and returns true if all are OK.
   const validate = (s: number) => {
     const e: Record<string, string> = {};
     if (s === 0) {
@@ -87,6 +96,7 @@ export default function CheckoutPage() {
   };
 
   const next = () => validate(step) && setStep((s) => s + 1);
+  // DEMO ONLY: creates a fake order id and empties the cart. No payment happens.
   const place = () => {
     setOrderId(`KS-${Date.now().toString().slice(-8)}`);
     clearCart();

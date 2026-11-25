@@ -1,4 +1,10 @@
 "use client";
+/**
+ * FILTER SIDEBAR for /shop.
+ * `Group` = one checkbox section; `Panel` = all filters (category, craft, state, material,
+ * price slider, in-stock toggle). Desktop shows Panel as a fixed sidebar; on mobile it
+ * opens as a slide-over drawer. Filter values are stored in store/useFilters.ts.
+ */
 
 import { useEffect } from "react";
 import { X } from "lucide-react";
@@ -6,6 +12,7 @@ import { categories, craftForms, materials, productStates } from "@/data/product
 import { MAX_PRICE, useFilters } from "@/store/useFilters";
 import { inr } from "@/lib/utils";
 
+// One titled list of checkboxes (e.g. "Region / State").
 function Group({ title, name, options, selected, onToggle }: { title: string; name: string; options: { value: string; label: string }[]; selected: string[]; onToggle: (v: string) => void }) {
   return (
     <fieldset className="border-b border-sand pb-5">
@@ -22,6 +29,7 @@ function Group({ title, name, options, selected, onToggle }: { title: string; na
   );
 }
 
+// All filter controls together; reused in the desktop sidebar and the mobile drawer.
 function Panel() {
   const f = useFilters();
   const opts = (xs: string[]) => xs.map((v) => ({ value: v, label: v }));

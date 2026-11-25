@@ -1,4 +1,9 @@
 "use client";
+/**
+ * PRODUCT PAGE UI: everything interactive on a product page.
+ * Sections: image gallery (thumbnails + hover zoom), price/stock/quantity/add-to-cart/
+ * wishlist, info tabs (craft details, meet your maker, care), and a related-products carousel.
+ */
 
 import Link from "next/link";
 import { useRef, useState } from "react";

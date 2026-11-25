@@ -39,6 +39,21 @@ store/        Zustand stores for cart/wishlist and filters
 types/        shared TypeScript types
 ```
 
+## Where to find what (quick guide)
+
+Every source file starts with a comment explaining what it does. Common tasks:
+
+| I want to… | Edit this |
+| --- | --- |
+| Add or change a product | `data/products.ts` (add to `baseProducts`, then add its photos to `imageMap`) |
+| Add a craft community | `data/artisans.ts` (append a `c(...)` entry) |
+| Add a photo | `lib/images.ts` (new entry with author and licence) |
+| Change colours or fonts | `app/globals.css` (`@theme` block) |
+| Change coupons or shipping rules | `lib/utils.ts` |
+| Change cart or price logic | `store/useStore.ts` |
+| Change shop filters | `components/FilterSidebar.tsx`, `store/useFilters.ts`, `app/shop/ShopClient.tsx` |
+| Change the homepage | `app/page.tsx` and `components/home/*` |
+
 ## About the data
 
 - `data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.

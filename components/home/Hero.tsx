@@ -1,3 +1,4 @@
+// HOME > HERO: big banner with the tagline, two call-to-action buttons and two craft photos.
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SafeImage from "../SafeImage";

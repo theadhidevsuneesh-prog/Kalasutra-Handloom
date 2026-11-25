@@ -1,4 +1,5 @@
 "use client";
+// FOOTER: site links, category links and a (demo) newsletter box; shown on every page via app/layout.tsx.
 
 import Link from "next/link";
 import { Leaf, Mail } from "lucide-react";

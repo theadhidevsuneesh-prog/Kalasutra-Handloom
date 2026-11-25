@@ -1,4 +1,8 @@
 "use client";
+/**
+ * NAVBAR: sticky top bar on every page: promo strip, logo, links, search box, wishlist
+ * and cart buttons (with item-count badges) and the mobile slide-in menu.
+ */
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,6 +26,7 @@ export default function Navbar() {
   const wishCount = useShop((s) => s.wishlist.length);
   const setCartOpen = useShop((s) => s.setCartOpen);
 
+  // Close the mobile menu after navigating, and lock page scroll while it is open.
   useEffect(() => setMenu(false), [pathname]);
   useEffect(() => {
     document.body.style.overflow = menu ? "hidden" : "";

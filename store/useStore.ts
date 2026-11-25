@@ -1,4 +1,11 @@
 "use client";
+/**
+ * CART & WISHLIST STORE (Zustand).
+ * Holds the cart lines, wishlist ids, applied coupon and whether the cart drawer is open.
+ * Cart, wishlist and coupon are saved in the browser's localStorage (persist), so they
+ * survive a refresh. Also exports computeTotals (price maths) and useMounted (avoids
+ * server/browser mismatch when showing saved data).
+ */
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
@@ -28,6 +35,7 @@ interface ShopState {
 
 const stockOf = (id: string) => products.find((p) => p.id === id)?.stock ?? 0;
 
+// The main store. Use as: const cart = useShop((s) => s.cart);
 export const useShop = create<ShopState>()(
   persist(
     (set, get) => ({
@@ -77,9 +85,13 @@ export const useShop = create<ShopState>()(
   ),
 );
 
-export const cartSubtotal = (cart: CartLine[]) =>
+// Sum of (price x quantity) for every cart line, before discount/shipping.
+export const cartSubtotal =(cart: CartLine[]) =>
   cart.reduce((sum, l) => sum + (products.find((p) => p.id === l.productId)?.price ?? 0) * l.qty, 0);
 
+// Price breakdown used by the cart drawer and checkout:
+// subtotal -> coupon discount -> shipping (free above the threshold) + extra fees -> total.
+// `deliveryFee` = extra charges chosen at checkout (express delivery, COD handling).
 export function computeTotals(cart: CartLine[], coupon: string | null, deliveryFee = 0) {
   const subtotal = cartSubtotal(cart);
   const c = coupon ? COUPONS[coupon] : undefined;

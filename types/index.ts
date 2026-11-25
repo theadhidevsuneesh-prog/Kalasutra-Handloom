@@ -1,3 +1,4 @@
+// SHARED TYPES: the shape of Category, Artisan, Product and Testimonial data used across the site.
 export type CategoryId = "handloom" | "pottery" | "brass" | "wood" | "apparel" | "art";
 
 export interface Category {

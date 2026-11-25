@@ -1,8 +1,15 @@
+/**
+ * SEARCH HELPERS.
+ * - productMatches: true if every word typed appears in a product's name, craft, state,
+ *   material, category or artisan. Used by /shop filtering.
+ * - suggest: builds the autocomplete list for the search box.
+ */
 import { artisans, getArtisan } from "@/data/artisans";
 import { categoryLabel, products } from "@/data/products";
 import type { Product } from "@/types";
 
-export const productMatches = (p: Product, query: string) => {
+// Used by the /shop filter: all typed words must appear somewhere in the product's searchable text.
+export const productMatches =(p: Product, query: string) => {
   const q = query.trim().toLowerCase();
   if (!q) return true;
   const hay = [p.name, p.craftForm, p.state, p.material, categoryLabel(p.category), getArtisan(p.artisanId)?.name ?? "", getArtisan(p.artisanId)?.village ?? ""]
@@ -18,6 +25,7 @@ export interface Suggestion {
   href: string;
 }
 
+// Autocomplete: after 2+ letters, returns up to 8 matches (crafts, regions, artisans, then products).
 export function suggest(query: string): Suggestion[] {
   const q = query.trim().toLowerCase();
   if (q.length < 2) return [];

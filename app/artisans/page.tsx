@@ -1,4 +1,9 @@
 "use client";
+/**
+ * ARTISANS DIRECTORY ( /artisans ).
+ * Left: a schematic map where each dot is a craft cluster (click to filter by its state).
+ * Right: state filter buttons and the list of ArtisanCards. Data: data/artisans.ts.
+ */
 
 import { useState } from "react";
 import { artisans, artisanStates } from "@/data/artisans";

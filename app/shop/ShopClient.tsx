@@ -1,4 +1,11 @@
 "use client";
+/**
+ * SHOP PAGE UI: product catalog with filtering, sorting and search.
+ * - Filter state lives in store/useFilters.ts.
+ * - On load/URL change the filters are reset and seeded from the URL query.
+ * - `results` applies every filter, then the chosen sort order.
+ * - Shows removable "chips" for active filters, and the filter sidebar/drawer.
+ */
 
 import { useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
@@ -36,6 +43,7 @@ export default function ShopClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [qs]);
 
+  // Apply search text + every selected filter, then sort. Recomputed only when a filter changes.
   const results = useMemo(() => {
     const list = products.filter(
       (p) =>
@@ -56,6 +64,7 @@ export default function ShopClient() {
     return sorted;
   }, [f.query, f.categories, f.craftForms, f.states, f.materials, f.artisan, f.maxPrice, f.inStockOnly, f.sort]);
 
+  // One removable "chip" per active filter, shown above the grid.
   const chips = [
     ...(f.query ? [{ label: `“${f.query}”`, clear: () => f.setQuery("") }] : []),
     ...(f.artisan ? [{ label: getArtisan(f.artisan)?.name ?? f.artisan, clear: () => f.setArtisan(null) }] : []),

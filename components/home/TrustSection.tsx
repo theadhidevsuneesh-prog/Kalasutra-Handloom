@@ -1,3 +1,4 @@
+// HOME > TRUST SECTION: customer testimonials plus the certification badges (Silk Mark, Craft Mark, Handloom Mark, packaging).
 import { Leaf, Package, ShieldCheck, Star, Recycle, Scroll } from "lucide-react";
 import { testimonials } from "@/data/products";
 

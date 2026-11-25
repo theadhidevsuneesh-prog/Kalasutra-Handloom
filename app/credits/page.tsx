@@ -1,3 +1,4 @@
+// PHOTO CREDITS PAGE ( /credits ): lists every photo's author and licence, generated from lib/images.ts.
 import type { Metadata } from "next";
 import { credits } from "@/lib/images";
 

@@ -80,6 +80,7 @@ export interface Credit {
   page: string;
 }
 
+// Turns a photo key into its full Wikimedia URL (960px thumbnail unless the original is smaller) plus credit details.
 const build = (k: ImgKey): Credit => {
   const [dir, file, author, license, original] = RAW[k] as Entry;
   const base = "https://upload.wikimedia.org/wikipedia/commons";
