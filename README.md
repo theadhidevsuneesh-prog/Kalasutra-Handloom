@@ -23,6 +23,7 @@ Next.js 16 (App Router) · React · TypeScript · Tailwind CSS 4 · Zustand · L
 ## Getting started
 
 ```bash
+cd frontend
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # production build
@@ -31,18 +32,18 @@ npm run build    # production build
 ## Project structure
 
 ```
-src/
-  app/                 pages/routes (home, shop, product, checkout, artisans, wishlist, credits)
-  frontend/            what visitors see and use
-    components/        Navbar, Footer, ProductCard, ArtisanCard, CartDrawer, FilterSidebar, home sections
-    store/             browser state (Zustand): cart/wishlist and shop filters
-  backend/             data and logic (there is no separate server or database)
-    data/              products.ts, artisans.ts
-    lib/               images.ts (photo library with credits), search.ts
-  shared/              used by both: types/ and utils.ts (prices, shipping, coupons)
+frontend/              everything visitors see: pages, CSS, components, client state, Next.js config
+  app/                 pages/routes (home, shop, product, checkout, artisans, wishlist, credits) + globals.css
+  components/          Navbar, Footer, ProductCard, ArtisanCard, CartDrawer, FilterSidebar, home sections
+  store/               browser state (Zustand): cart/wishlist and shop filters
+  package.json, next.config.ts, tsconfig.json, postcss.config.mjs
+backend/               data and logic (there is no separate server or database)
+  data/                products.ts, artisans.ts
+  lib/                 images.ts (photo library with credits), search.ts, utils.ts (prices, shipping, coupons)
+  types/               shared TypeScript types
 ```
 
-Each of `frontend/`, `backend/` and `shared/` has its own short README.
+Each of `frontend/` and `backend/` has its own short README.
 
 ## Where to find what (quick guide)
 
@@ -50,23 +51,23 @@ Every source file starts with a comment explaining what it does. Common tasks:
 
 | I want to… | Edit this |
 | --- | --- |
-| Add or change a product | `src/backend/data/products.ts` (add to `baseProducts`, then add its photos to `imageMap`) |
-| Add a craft community | `src/backend/data/artisans.ts` (append a `c(...)` entry) |
-| Add a photo | `src/backend/lib/images.ts` (new entry with author and licence) |
-| Change colours or fonts | `src/app/globals.css` (`@theme` block) |
-| Change coupons or shipping rules | `src/shared/utils.ts` |
-| Change cart or price logic | `src/frontend/store/useStore.ts` |
-| Change shop filters | `src/frontend/components/FilterSidebar.tsx`, `src/frontend/store/useFilters.ts`, `src/app/shop/ShopClient.tsx` |
-| Change the homepage | `src/app/page.tsx` and `src/frontend/components/home/*` |
+| Add or change a product | `backend/data/products.ts` (add to `baseProducts`, then add its photos to `imageMap`) |
+| Add a craft community | `backend/data/artisans.ts` (append a `c(...)` entry) |
+| Add a photo | `backend/lib/images.ts` (new entry with author and licence) |
+| Change colours or fonts | `frontend/app/globals.css` (`@theme` block) |
+| Change coupons or shipping rules | `backend/lib/utils.ts` |
+| Change cart or price logic | `frontend/store/useStore.ts` |
+| Change shop filters | `frontend/components/FilterSidebar.tsx`, `frontend/store/useFilters.ts`, `frontend/app/shop/ShopClient.tsx` |
+| Change the homepage | `frontend/app/page.tsx` and `frontend/components/home/*` |
 
 ## About the data
 
-- `src/backend/data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.
-- `src/backend/data/products.ts`: products represent real craft traditions, but listings, **prices, stock and ratings are illustrative**. They are not real sellers or inventory.
+- `backend/data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.
+- `backend/data/products.ts`: products represent real craft traditions, but listings, **prices, stock and ratings are illustrative**. They are not real sellers or inventory.
 - The state-by-state list of crafts follows the Indiahandmade article "All India Handicrafts Week 2025". Their photos were not copied.
-- Photographs come from Wikimedia Commons under free licences. See `/credits` or `src/backend/lib/images.ts` for each author and licence.
+- Photographs come from Wikimedia Commons under free licences. See `/credits` or `backend/lib/images.ts` for each author and licence.
 - Checkout is a demo: no payment is processed and nothing is stored on a server.
 
 ## Deployment
 
-Deployed on Vercel. To redeploy: `npx vercel deploy --prod`.
+Deployed on Vercel. Because the app now lives in `frontend/` and imports `../backend`, the Vercel project needs **Root Directory = `frontend`** with "Include source files outside of the Root Directory" enabled.
