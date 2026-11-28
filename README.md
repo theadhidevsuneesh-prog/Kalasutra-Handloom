@@ -31,13 +31,18 @@ npm run build    # production build
 ## Project structure
 
 ```
-app/          routes (home, shop, product, checkout, artisans, wishlist, credits)
-components/   Navbar, Footer, ProductCard, ArtisanCard, CartDrawer, FilterSidebar, home sections
-data/         products.ts, artisans.ts (mock data)
-lib/          search, utilities, images (photo library with credits)
-store/        Zustand stores for cart/wishlist and filters
-types/        shared TypeScript types
+src/
+  app/                 pages/routes (home, shop, product, checkout, artisans, wishlist, credits)
+  frontend/            what visitors see and use
+    components/        Navbar, Footer, ProductCard, ArtisanCard, CartDrawer, FilterSidebar, home sections
+    store/             browser state (Zustand): cart/wishlist and shop filters
+  backend/             data and logic (there is no separate server or database)
+    data/              products.ts, artisans.ts
+    lib/               images.ts (photo library with credits), search.ts
+  shared/              used by both: types/ and utils.ts (prices, shipping, coupons)
 ```
+
+Each of `frontend/`, `backend/` and `shared/` has its own short README.
 
 ## Where to find what (quick guide)
 
@@ -45,21 +50,21 @@ Every source file starts with a comment explaining what it does. Common tasks:
 
 | I want to… | Edit this |
 | --- | --- |
-| Add or change a product | `data/products.ts` (add to `baseProducts`, then add its photos to `imageMap`) |
-| Add a craft community | `data/artisans.ts` (append a `c(...)` entry) |
-| Add a photo | `lib/images.ts` (new entry with author and licence) |
-| Change colours or fonts | `app/globals.css` (`@theme` block) |
-| Change coupons or shipping rules | `lib/utils.ts` |
-| Change cart or price logic | `store/useStore.ts` |
-| Change shop filters | `components/FilterSidebar.tsx`, `store/useFilters.ts`, `app/shop/ShopClient.tsx` |
-| Change the homepage | `app/page.tsx` and `components/home/*` |
+| Add or change a product | `src/backend/data/products.ts` (add to `baseProducts`, then add its photos to `imageMap`) |
+| Add a craft community | `src/backend/data/artisans.ts` (append a `c(...)` entry) |
+| Add a photo | `src/backend/lib/images.ts` (new entry with author and licence) |
+| Change colours or fonts | `src/app/globals.css` (`@theme` block) |
+| Change coupons or shipping rules | `src/shared/utils.ts` |
+| Change cart or price logic | `src/frontend/store/useStore.ts` |
+| Change shop filters | `src/frontend/components/FilterSidebar.tsx`, `src/frontend/store/useFilters.ts`, `src/app/shop/ShopClient.tsx` |
+| Change the homepage | `src/app/page.tsx` and `src/frontend/components/home/*` |
 
 ## About the data
 
-- `data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.
-- `data/products.ts`: products represent real craft traditions, but listings, **prices, stock and ratings are illustrative**. They are not real sellers or inventory.
+- `src/backend/data/artisans.ts`: real craft communities and clusters (GI-registered traditions where applicable), described factually. No individual is named or quoted.
+- `src/backend/data/products.ts`: products represent real craft traditions, but listings, **prices, stock and ratings are illustrative**. They are not real sellers or inventory.
 - The state-by-state list of crafts follows the Indiahandmade article "All India Handicrafts Week 2025". Their photos were not copied.
-- Photographs come from Wikimedia Commons under free licences. See `/credits` or `lib/images.ts` for each author and licence.
+- Photographs come from Wikimedia Commons under free licences. See `/credits` or `src/backend/lib/images.ts` for each author and licence.
 - Checkout is a demo: no payment is processed and nothing is stored on a server.
 
 ## Deployment
