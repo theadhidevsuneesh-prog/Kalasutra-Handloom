@@ -1,0 +1,8 @@
+{
+  "name": "kalasutra-root",
+  "private": true,
+  "description": "Root marker so Vercel detects Next.js; the real app lives in frontend/ (see vercel.json).",
+  "dependencies": {
+    "next": "16.4.6"
+  }
+}
